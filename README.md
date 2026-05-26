@@ -198,18 +198,6 @@ mvn test
 
 This project is deployed on **Railway** with GitHub auto-deploy. Every push to `main` triggers a new deployment automatically.
 
-**To deploy your own instance:**
-1. Fork this repo
-2. Go to [railway.app](https://railway.app) → New Project → Deploy from GitHub
-3. Select your repo — Railway auto-detects the Java project
-4. Add environment variable: `PORT=8080`
-5. Go to Settings → Networking → Generate Domain
-6. Your public URL is ready
-
-> Before deploying, update the three constants in `BfhlServiceImpl.java`:
-> - `USER_ID` → your name + DOB in `name_ddmmyyyy` format
-> - `EMAIL` → your college email
-> - `ROLL_NUMBER` → your actual roll number
 
 ---
 
