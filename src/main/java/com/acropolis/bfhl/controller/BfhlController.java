@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @Slf4j
 @RestController
 @RequestMapping("/bfhl")
@@ -18,10 +20,16 @@ public class BfhlController {
 
     private final BfhlService bfhlService;
 
+    @GetMapping
+    public ResponseEntity<Map<String, Integer>> getOperationCode() {
+        log.info("GET /bfhl");
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(Map.of("operation_code", 1));
+    }
+
     @PostMapping
-    @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<BfhlResponse> process(@Valid @RequestBody BfhlRequest request) {
-        log.info("POST /bfhl — {} elements", request.getData().size());
+        log.info("POST /bfhl - {} elements", request.getData().size());
         BfhlResponse response = bfhlService.processData(request.getData());
         return ResponseEntity.ok(response);
     }

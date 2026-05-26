@@ -14,6 +14,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -28,6 +29,14 @@ class BfhlControllerTest {
 
     @MockBean
     private BfhlService bfhlService;
+
+    // ── GET /bfhl — returns operation_code: 1 ─────────────────────────────
+    @Test
+    void givenGetRequest_whenGet_thenReturns200WithOperationCode() throws Exception {
+        mockMvc.perform(get("/bfhl"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.operation_code").value(1));
+    }
 
     // ── curl Example A: ["a","1","334","4","R","$"] ────────────────────────
     @Test
