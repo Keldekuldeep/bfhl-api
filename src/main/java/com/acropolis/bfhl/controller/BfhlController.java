@@ -20,9 +20,9 @@ public class BfhlController {
 
     private final BfhlService bfhlService;
 
-    @GetMapping
+    @GetMapping("/health")
     public ResponseEntity<Map<String, Integer>> getOperationCode() {
-        log.info("GET /bfhl");
+        log.info("GET /bfhl/health");
         return ResponseEntity.status(HttpStatus.OK)
                 .body(Map.of("operation_code", 1));
     }
